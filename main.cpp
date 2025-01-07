@@ -4,6 +4,7 @@
 // ************************************
 
 #define F_CPU 1000000UL // defining CPU frequency
+#define DELAY_TIME 600 // defining delay time
 
 // array to store LED pins
 int led_arr[5] = {PB0, PB1, PB2, PB3, PB4};
@@ -14,14 +15,14 @@ void chain_led(int num = 1){
 		// *** turn on LEDs one by one ***
 		for(int i = 0; i < sizeof(led_arr) / sizeof(led_arr[0]); ++i){
 			PORTB |= (1 << led_arr[i]); // set LED pin high
-			_delay_ms(200); // wait for 200 ms
+			_delay_ms(DELAY_TIME); // wait for 600 ms
 		}
 		// ******************************
 		
 		// *** turn off LEDs one by one ***
 		for(int i = 0; i < sizeof(led_arr) / sizeof(led_arr[0]); ++i){
 			PORTB &= ~(1 << led_arr[i]); // set LED pin low
-			_delay_ms(200); // wait for 200 ms
+			_delay_ms(DELAY_TIME); // wait for 600 ms
 		}
 		// *******************************
 	}
@@ -36,14 +37,14 @@ void blink_led(int num = 1){
 		}
 		// **********************
 		
-		_delay_ms(200); // wait for 200 ms
+		_delay_ms(1000); // wait for 1000 ms
 		
 		// *** turn off all LEDs ***
 		for(int i = 0; i < sizeof(led_arr); ++i){
 			PORTB &= ~(1 << led_arr[i]); // set all LED pins low
 		}
 		// ***********************
-		_delay_ms(200); // wait for 200 ms
+		_delay_ms(1000); // wait for 1000 ms
 	}
 }
 
@@ -55,26 +56,26 @@ void current_led(int num = 1){
 			PORTB |= (1 << led_arr[i]); // set odd-numbered LED pins high
 		}
 		// **********************************
-		_delay_ms(200); // wait for 200 ms
+		_delay_ms(1000); // wait for 1000 ms
 		// *** turn off 1st, 3rd, 5th LEDs ***
 		for(int i = 0; i < sizeof(led_arr); i += 2){
 			PORTB &= ~(1 << led_arr[i]); // set odd-numbered LED pins low
 		}
 		// ***********************************
-		_delay_ms(200); // wait for 200 ms
+		_delay_ms(1000); // wait for 1000 ms
 		
 		// *** turn on 2nd, 4th LEDs ***
 		for(int i = 1; i < sizeof(led_arr) / sizeof(led_arr[0]); i += 2){
 			PORTB |= (1 << led_arr[i]); // set even-numbered LED pins high
 		}
 		// ****************************
-		_delay_ms(200); // wait for 200 ms
+		_delay_ms(1000); // wait for 1000 ms
 		// *** turn off 2nd, 4th LEDs ***
 		for(int i = 1; i < sizeof(led_arr) / sizeof(led_arr[0]); i += 2){
 			PORTB &= ~(1 << led_arr[i]); // set even-numbered LED pins low
 		}
 		// *****************************
-		_delay_ms(200); // wait for 200 ms
+		_delay_ms(1000); // wait for 1000 ms
 	}
 }
 
@@ -84,14 +85,14 @@ void revers_chain_led(int num = 1){
 		// *** turn on LEDs in reverse order ***
 		for(int i = (sizeof(led_arr) / sizeof(led_arr[0])) - 1; i >= 0; --i){
 			PORTB |= (1 << led_arr[i]); // set LED pin high
-			_delay_ms(200); // wait for 200 ms
+			_delay_ms(DELAY_TIME); // wait for 600 ms
 		}
 		// ************************************
 		
 		// *** turn off LEDs in reverse order ***
 		for(int i = (sizeof(led_arr) / sizeof(led_arr[0])) - 1 ; i >= 0; --i){
 			PORTB &= ~(1 << led_arr[i]); // set LED pin low
-			_delay_ms(200); // wait for 200 ms
+			_delay_ms(DELAY_TIME); // wait for 600 ms
 		}
 		// *************************************
 	}
